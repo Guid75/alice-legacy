@@ -8,8 +8,14 @@
 module.exports = {
 
   attributes: {
-    firstName: 'STRING',
-    lastName: 'STRING',
+    firstName: {
+      type: 'string',
+      required: true
+    },
+    lastName: {
+      type: 'string',
+      required: true
+    },
     class: {
       model: 'class'
     }

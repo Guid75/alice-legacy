@@ -1,0 +1,40 @@
+On trouvera les objets conceptuels suivants :
+
+* Un "atelier" : objet représentant une activité en tant que telle,
+indépendamment d'horaires ou de dates. (par exemple : "Initiation à l'anglais")
+Possède:
+- Un nom. Obligatoire. Ex: "Initiation Anglais"
+- Un commentaire. Optionnel. Ex: "Cours d'initiation à la langue
+anglaise, en vu d'obtenir un indice TOFFEL".
+- Un ou plusieurs enseignants "par défaut" de l'atelier. Optionnel, on
+pourra définir des enseignants dans les sessions.
+- Un nombre maximal d'élèves par défaut. Optionnel, on pourra définir
+un nombre maximal d'élèves dans les sessions.
+
+
+* Une "session" : la mise en pratique d'un atelier, par le biais de la
+  définition de "séances".
+  Possède :
+  - Un nom d'atelier (qui n'est pas nécessairement un nom d'atelier
+    existant).
+  - Un commentaire (qui n'est pas le commentaire de l'atelier)
+  - Une ou plusieurs "séances"
+  - Un ou plusieurs enseignants, pré-remplis éventuellement par le choix de
+    l'atelier si ce dernier possède des enseignants par défaut. Obligatoire.
+  - Un nombre maximal d'élèves par défaut, pré-rempli éventuellement par
+    le choix de l'atelier si ce dernier possède un nombre maximal d'élève
+    par défaut). Optionnels.
+  -  Une salle. Optionnelle.
+  - Une collection d'apprenants
+  - Une date de début d'ouverture aux inscriptions
+
+* Une "séance" : un élément "atomique" d'une session, constitué
+  principalement de :
+  - un créneau horaire. Obligatoire.
+  - une salle. Optionnelle.
+
+* Un "apprenant" (ou élève) :
+  - Un prénom
+  - Un nom
+  - Un login
+  - Un mot de passe

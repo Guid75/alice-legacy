@@ -26,17 +26,19 @@ var jsFilesToInject = [
 	// must be in first position
 	'vendor/angular/angular.js',
 
-  'vendor/**/*.js',
+	'vendor/jquery/jquery.js',
 
-  // Load sails.io before everything else
-  'js/dependencies/sails.io.js',
+	'vendor/**/*.js',
+
+	// Load sails.io before everything else
+	'js/dependencies/sails.io.js',
 
 	// must be in first position into all other js
 	'js/app.js',
 
-  // All of the rest of your client-side js files
-  // will be injected here in no particular order.
-  'js/**/*.js'
+	// All of the rest of your client-side js files
+	// will be injected here in no particular order.
+	'js/**/*.js'
 ];
 
 
