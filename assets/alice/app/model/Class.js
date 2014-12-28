@@ -3,6 +3,9 @@ Ext.define('Alice.model.Class', {
 	fields: [
 		'label'
 	],
+	requires: [
+		'Alice.model.Student'
+	],
 	hasMany: [{
 		model: 'Alice.model.Student',
 		name: 'students'

@@ -9,8 +9,8 @@ Ext.define('Alice.view.main.Main', {
     extend: 'Ext.container.Container',
     requires: [
         'Alice.view.main.MainController',
-        'Alice.view.main.MainModel'// ,
-		// 'Alice.view.classes.Classes'
+        'Alice.view.main.MainModel',
+		'Alice.store.Navigation'
     ],
 
     xtype: 'app-main',
@@ -22,68 +22,73 @@ Ext.define('Alice.view.main.Main', {
 
 	layout: 'fit',
 
-	items: [
-		{
-			xtype: 'panel',
-			bind: {
-				title: '{name}'
-			},
-			layout: 'fit',
-			items: [
-				{
-					xtype: 'tabpanel',
-					items: [
-						{
-							title: 'Workshops',
-							html: 'here are defined workshops'
-						},
-						{
-							title: 'Students',
-							layout:  {
-								type: 'hbox',
-								align: 'stretch'
+	initComponent: function () {
+		var store = new Alice.store.Navigation();
+		this.items = [
+			{
+				xtype: 'panel',
+				bind: {
+					title: '{name}'
+				},
+				layout: 'fit',
+				items: [
+					{
+						xtype: 'tabpanel',
+						items: [
+							{
+								title: 'Workshops',
+								html: 'here are defined workshops'
 							},
-							items: [
-								{
-									xtype: 'panel',
-									// region: 'west',
-									html: '<ul><li>This area is commonly used for navigation, for example, using a "tree" component.</li></ul>',
-									width: 250,
-									title: 'Students',
-									resizable: true,
-									resizeHandles: 'e',
-									// style: {
-									// 	borderRight: '2px solid #157FCC'
-									// },
-									collapsible: true,
-									collapseDirection: 'left',
-									tbar: [{
-										xtype: 'label',
-										text: 'Search'
+							{
+								title: 'Students',
+								layout:  {
+									type: 'hbox',
+									align: 'stretch'
+								},
+								items: [
+									{
+										xtype: 'panel',
+										// region: 'west',
+										html: '<ul><li>This area is commonly used for navigation, for example, using a "tree" component.</li></ul>',
+										width: 250,
+										title: 'Students',
+										resizable: true,
+										resizeHandles: 'e',
+										collapsible: true,
+										collapseDirection: 'left',
+										tbar: [{
+											xtype: 'label',
+											text: 'Search'
+										}, {
+											xtype: 'textfield'
+										}, {
+											xtype: 'button',
+											text: 'Add'
+										}]
 									}, {
-										xtype: 'textfield'
-									}]
-								},{
-									region: 'center',
-									flex: 1,
-									xtype: 'tabpanel',
-									items:[{
-										title: 'By class',
-										xtype: 'ClassesView'
-									}, {
-										title: 'All students',
-										html: '<h2>Content appropriate for the current navigation.</h2>'
-									}]
-								}
-							]
-						},
-						{
-							title: 'Teachers',
-							html: 'here are defined teachers'
-						}
-					]
-				}
-			]
-		}
-	]
+										tbar: [
+											{
+												xtype: 'breadcrumb',
+												store: store,
+												showIcons: true// ,
+												// // Start with "Ext JS > dd > DragZone.js" selected
+												// selection: store.getRoot().childNodes[4].childNodes[7]
+											}
+										],
+										xtype: 'ClassesView',
+										flex: 1
+									}
+								]
+							},
+							{
+								title: 'Teachers',
+								html: 'here are defined teachers'
+							}
+						]
+					}
+				]
+			}
+		];
+		this.callParent();
+	}
 });
