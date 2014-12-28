@@ -10,6 +10,7 @@ Ext.define('Alice.Application', {
 
     stores: [
         // TODO: add global / shared stores here
+		'Classes'
     ],
 
     launch: function () {

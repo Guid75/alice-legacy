@@ -5,7 +5,9 @@ Ext.define('Alice.view.classes.Classes', {
 	requires: [
 		'Alice.view.formation.Formation',
 		'Alice.model.Class',
-		'Alice.view.ClassesController'
+		'Alice.view.classes.ClassesController',
+		'Alice.store.Classes',
+		'Alice.view.student.Tree'
 	],
 	controller: 'classes',
 	layout: {
@@ -20,35 +22,32 @@ Ext.define('Alice.view.classes.Classes', {
 	},
 
 	_refreshClasses: function () {
-		var me = this;
-		this._store.load({
-			callback: function (records, operation, success) {
-				var items = [];
-				records.forEach(function (record) {
-					items.push({
-						xtype: 'panel',
-						cls: 'student-class',
-						title: record.get('label'),
-						tools: [
-							{
-								xtype: 'button',
-								text: 'Add',
-								handler: 'addStudent',
-								record: record
-							}
-						],
-						tpl: '<tpl for="students"><div class="alice-class-student" student-id="{id}">{[values.lastName.toUpperCase()]}, {firstName}</div></tpl>',
-						data: record.getData({ associated: true })
-					});
-				});
-				me.removeAll();
-				me.add(items);
-				me.on('afterrender', function () {
-					me.mon(me.el, 'click', me.onStudentClick, me, { delegate: 'div.alice-class-student' });
-				});
-			}
+		var
+		me = this,
+		items = [];
+		Alice.getApplication().getStore('Classes').each(function (record) {
+			items.push({
+				xtype: 'panel',
+				cls: 'student-class',
+				title: record.get('label'),
+				tools: [
+					{
+						xtype: 'button',
+						text: 'Add',
+						handler: 'addStudent',
+						record: record
+					}
+				],
+				tpl: '<tpl for="students"><div class="alice-class-student" student-id="{id}">{[values.lastName.toUpperCase()]}, {firstName}</div></tpl>',
+				data: record.getData({ associated: true })
+			});
 		});
-
+		this.removeAll();
+		this.add(items);
+		this.on('afterrender', function () {
+			console.log('afterrender');
+			this.mon(this.el, 'click', this.onStudentClick, this, { delegate: 'div.alice-class-student' });
+		}.bind(this));
 	},
 
 	onStudentClick: function (ev, t) {
@@ -71,10 +70,17 @@ Ext.define('Alice.view.classes.Classes', {
 		return this._store;
 	},
 
-	initComponent: function () {
-		this._store = Ext.create('Ext.data.Store', { model: 'Alice.model.Class' });
+	afterRender: function () {
+		// maybe the store is loaded?
+//		this._refreshClasses();
 
-		this._refreshClasses();
+		this.callParent();
+	},
+
+	initComponent: function () {
+		Alice.getApplication().getStore('Classes').on('load', function () {
+			this._refreshClasses();
+		}.bind(this));
 
 		this.callParent(arguments);
 	}

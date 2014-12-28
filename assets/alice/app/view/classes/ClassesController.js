@@ -1,8 +1,8 @@
-Ext.define('Alice.view.ClassesController', {
+Ext.define('Alice.view.classes.ClassesController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.classes',
 	requires: [
-		'Alice.view.AddStudent'
+		'Alice.view.student.Add'
 	],
 	init: function () {
 		this.control({
@@ -13,21 +13,16 @@ Ext.define('Alice.view.ClassesController', {
 			}
 		});
 	},
-	onPanelRendered: function () {
-		console.log('panel was rendered');
-	},
 	addStudent: function (button) {
 		var
-		me = this,
 		record = button.record;
 
-		Ext.create('Alice.view.AddStudent', {
+		Ext.create('Alice.view.student.Add', {
 			modal: true,
 			classId: record.getId(),
 			listeners: {
 				studentCreated: function () {
-					console.log('studentCreated');
-					me.getView()._refreshClasses();
+					Alice.getApplication().getStore('Classes').load();
 				}
 			}
 		}).show();
@@ -41,7 +36,8 @@ Ext.define('Alice.view.ClassesController', {
 		student.drop();
 		student.save({
 			callback: function () {
-				this.getView()._refreshClasses();
+				Alice.getApplication().getStore('Classes').load();
+//				this.getView()._refreshClasses();
 			}.bind(this)
 		});
 	}

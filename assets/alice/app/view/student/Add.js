@@ -1,17 +1,16 @@
-
-Ext.define("Alice.view.AddStudent",{
+Ext.define("Alice.view.student.Add",{
     extend: "Ext.window.Window",
 
-	alias: 'widget.addstudent',
+	alias: 'widget.studentadd',
 	requires: [
-		'Alice.view.AddStudentController',
-		'Alice.view.AddStudentModel',
+		'Alice.view.student.AddController',
+		'Alice.view.student.AddModel',
 		'Alice.model.Class'
 	],
 
-    controller: "addstudent",
+    controller: 'studentadd',
     viewModel: {
-        type: "addstudent"
+        type: 'studentadd'
     },
 
 	title: 'Add a new student',
@@ -55,15 +54,13 @@ Ext.define("Alice.view.AddStudent",{
 						fieldLabel: 'First name',
 						name: 'firstName',
 						reference: 'firstNameField',
-						id: 'addstudent-firstname',
 						itemId: 'firstName'
 					},
 					{
 						allowBlank: false,
 						fieldLabel: 'Last name',
 						name: 'lastName',
-						reference: 'lastNameField',
-						id: 'addstudent-lastname'
+						reference: 'lastNameField'
 					},
 					{
 						xtype: 'combo',

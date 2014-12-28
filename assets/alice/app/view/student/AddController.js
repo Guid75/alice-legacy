@@ -1,8 +1,9 @@
-Ext.define('Alice.view.AddStudentController', {
+Ext.define('Alice.view.student.AddController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.addstudent',
+    alias: 'controller.studentadd',
 	requires: [
-		'Alice.model.Student'
+		'Alice.model.Student',
+		'Alice.String'
 	],
 	refs: [
 		{
@@ -30,6 +31,10 @@ Ext.define('Alice.view.AddStudentController', {
 			}
 		});
 	},
+	_forgeLogin: function (firstName, lastName) {
+		return Alice.String.removeDiacritics(firstName).toLowerCase() + '.' +
+			Alice.String.removeDiacritics(lastName).toLowerCase();
+	},
 	fillAutoLogin: function (config) {
 		var
 		firstName = this.lookupReference('firstNameField').getValue(),
@@ -41,14 +46,14 @@ Ext.define('Alice.view.AddStudentController', {
 			return;
 		}
 
-		oldStandardLogin = (config.oldFirstName || firstName).toLowerCase() + '.' +
-			(config.oldLastName || lastName).toLowerCase();
+		oldStandardLogin = this._forgeLogin(config.oldFirstName || firstName,
+											config.oldLastName || lastName);
 
 		if (loginField.getValue() !== oldStandardLogin && loginField.getValue()) {
 			return;
 		}
 
-		loginField.setValue(firstName.toLowerCase() + '.' + lastName.toLowerCase());
+		loginField.setValue(this._forgeLogin(firstName, lastName));
 	},
 	onCancel: function () {
 		this.closeView();
