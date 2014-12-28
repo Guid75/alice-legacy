@@ -4,6 +4,7 @@ Ext.define('Alice.model.Student', {
 	fields: [
 		'firstName',
 		'lastName',
+		'class',
 		'login'
 	],
 	belongsTo: 'Class',

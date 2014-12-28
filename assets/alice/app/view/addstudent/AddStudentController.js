@@ -59,10 +59,10 @@ Ext.define('Alice.view.AddStudentController', {
 		});
 		store.add({ firstName: this.lookupReference('firstNameField').getValue(),
 					lastName: this.lookupReference('lastNameField').getValue(),
-					class: this.lookupReference('classField').getValue() });
+					class: this.lookupReference('classField').getValue(),
+					login: this.lookupReference('loginField').getValue() });
 		store.sync({
 			success: function () {
-				console.log(this.getView());
 				this.getView().fireEvent('studentCreated');
 				this.closeView();
 			}.bind(this)
