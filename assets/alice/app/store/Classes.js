@@ -1,6 +1,6 @@
 Ext.define('Alice.store.Classes', {
 	extend: 'Ext.data.Store',
-	alias: 'store.Classes',
+	alias: 'store.classes',
 	requires: [
 		'Alice.model.Class'
 	],

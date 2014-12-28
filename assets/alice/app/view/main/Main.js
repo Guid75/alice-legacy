@@ -10,7 +10,8 @@ Ext.define('Alice.view.main.Main', {
     requires: [
         'Alice.view.main.MainController',
         'Alice.view.main.MainModel',
-		'Alice.store.Navigation'
+		'Alice.store.Navigation',
+		'Alice.view.student.Tree'
     ],
 
     xtype: 'app-main',
@@ -76,7 +77,7 @@ Ext.define('Alice.view.main.Main', {
 							},
 							{
 								title: 'Teachers',
-								html: 'here are defined teachers'
+								xtype: 'teachers'
 							}
 						]
 					}

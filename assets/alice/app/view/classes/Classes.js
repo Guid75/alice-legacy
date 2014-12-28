@@ -66,10 +66,6 @@ Ext.define('Alice.view.classes.Classes', {
 		}
 	},
 
-	getStore: function () {
-		return this._store;
-	},
-
 	afterRender: function () {
 		// maybe the store is loaded?
 //		this._refreshClasses();
