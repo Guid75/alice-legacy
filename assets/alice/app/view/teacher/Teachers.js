@@ -3,7 +3,8 @@ Ext.define('Alice.view.teacher.Teachers', {
 	alias: 'widget.teachers',
 	requires: [
 		'Alice.model.Teacher',
-		'Alice.view.teacher.TeachersController'
+		'Alice.view.teacher.TeachersController',
+		'Alice.store.Teachers'
 	],
 	controller: 'teachers',
 
@@ -12,7 +13,7 @@ Ext.define('Alice.view.teacher.Teachers', {
         { text: 'Last name', dataIndex: 'lastName', flex: 1 }
     ],
 
-	store: Alice.getApplication().getStore('Teachers'),
+	store: 'Teachers',
 
 	initComponent: function () {
 		this.callParent(arguments);

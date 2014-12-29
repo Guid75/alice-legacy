@@ -30,8 +30,8 @@ Ext.define("Alice.view.student.Add",{
 				xtype: 'form',
 				fieldDefaults: {
 					labelAlign: 'right',
-					labelWidth: 115,
-					msgTarget: 'side'
+					labelWidth: 115// ,
+					// msgTarget: 'side'
 				},
 				bodyPadding: 10,
 				defaults: {

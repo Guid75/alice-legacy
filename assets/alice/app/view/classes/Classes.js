@@ -44,10 +44,6 @@ Ext.define('Alice.view.classes.Classes', {
 		});
 		this.removeAll();
 		this.add(items);
-		this.on('afterrender', function () {
-			console.log('afterrender');
-			this.mon(this.el, 'click', this.onStudentClick, this, { delegate: 'div.alice-class-student' });
-		}.bind(this));
 	},
 
 	onStudentClick: function (ev, t) {
@@ -77,6 +73,10 @@ Ext.define('Alice.view.classes.Classes', {
 		Alice.getApplication().getStore('Classes').on('load', function () {
 			this._refreshClasses();
 		}.bind(this));
+
+		this.on('afterrender', function () {
+			this.mon(this.el, 'click', this.onStudentClick, this, { delegate: 'div.alice-class-student' });
+		});
 
 		this.callParent(arguments);
 	}

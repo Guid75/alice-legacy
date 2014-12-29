@@ -7,7 +7,7 @@ Ext.define('Alice.model.Student', {
 		'class',
 		'login'
 	],
-	belongsTo: 'Class',
+//	belongsTo: 'Class',
 	proxy: {
 		type: 'rest',
 		noCache: false,

@@ -9,7 +9,8 @@ Ext.define('Alice.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
     requires: [
-        'Ext.window.MessageBox'
+        'Ext.window.MessageBox',
+		'Alice.view.student.Add'
     ],
 
     alias: 'controller.main',
@@ -22,5 +23,16 @@ Ext.define('Alice.view.main.MainController', {
         if (choice === 'yes') {
             //
         }
-    }
+    },
+
+	addStudent: function (button) {
+		Ext.create('Alice.view.student.Add', {
+			modal: true,
+			listeners: {
+				studentCreated: function () {
+					Alice.getApplication().getStore('Classes').load();
+				}
+			}
+		}).show();
+	}
 });
