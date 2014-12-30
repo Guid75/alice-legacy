@@ -14,18 +14,7 @@ Ext.define('Alice.view.classes.ClassesController', {
 		});
 	},
 	addStudent: function (button) {
-		var
-		record = button.record;
-
-		Ext.create('Alice.view.student.Add', {
-			modal: true,
-			classId: record.getId(),
-			listeners: {
-				studentCreated: function () {
-					Alice.getApplication().getStore('Classes').load();
-				}
-			}
-		}).show();
+		this.fireEvent('studentAddStudent', button.record.getId());
 	},
 	removeStudent: function (studentId) {
 		var
@@ -37,7 +26,6 @@ Ext.define('Alice.view.classes.ClassesController', {
 		student.save({
 			callback: function () {
 				Alice.getApplication().getStore('Classes').load();
-//				this.getView()._refreshClasses();
 			}.bind(this)
 		});
 	}

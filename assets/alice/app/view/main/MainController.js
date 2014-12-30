@@ -26,13 +26,6 @@ Ext.define('Alice.view.main.MainController', {
     },
 
 	addStudent: function (button) {
-		Ext.create('Alice.view.student.Add', {
-			modal: true,
-			listeners: {
-				studentCreated: function () {
-					Alice.getApplication().getStore('Classes').load();
-				}
-			}
-		}).show();
+		this.fireEvent('studentAddStudent');
 	}
 });

@@ -7,13 +7,6 @@ Ext.define('Alice.view.student.TreeController', {
 	],
 
 	addStudent: function (button) {
-		Ext.create('Alice.view.student.Add', {
-			modal: true,
-			listeners: {
-				studentCreated: function () {
-					Alice.getApplication().getStore('Classes').load();
-				}
-			}
-		}).show();
+		this.fireEvent('studentAddStudent');
 	}
 });

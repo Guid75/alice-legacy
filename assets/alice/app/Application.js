@@ -13,6 +13,10 @@ Ext.define('Alice.Application', {
 		'Teachers'
     ],
 
+	controllers: [
+		'Student'
+	],
+
     launch: function () {
         // TODO - Launch the application
     }
