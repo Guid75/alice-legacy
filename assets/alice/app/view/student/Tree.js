@@ -20,7 +20,10 @@ Ext.define('Alice.view.student.Tree', {
 	tbar: [
 		{
 			xtype: 'textfield',
-			flex: 1
+			flex: 1,
+			listeners: {
+				change: 'studentFilterChanged'
+			}
 		},
 		{
 			xtype: 'button',
@@ -28,6 +31,10 @@ Ext.define('Alice.view.student.Tree', {
 			handler: 'addStudent'
 		}
 	],
+
+	getStore: function () {
+		return this.store;
+	},
 
 	_refreshTree: function () {
 		var root = {

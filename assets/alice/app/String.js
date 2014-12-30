@@ -103,5 +103,8 @@ Ext.define('Alice.String', {
 				return diacriticsMap[a] || a;
 			});
 		};
-	}())
+	}()),
+	isSubString: function (haystack, needle) {
+		return Alice.String.removeDiacritics(haystack).toLowerCase().indexOf(Alice.String.removeDiacritics(needle).toLowerCase()) >= 0;
+	}
 });
