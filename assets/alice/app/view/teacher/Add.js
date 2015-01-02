@@ -1,30 +1,25 @@
-Ext.define('Alice.view.student.Add', {
+Ext.define('Alice.view.teacher.Add', {
     extend: 'Ext.window.Window',
 
-	alias: 'widget.studentadd',
+	alias: 'widget.teacheradd',
 	requires: [
-		'Alice.view.student.AddController',
-		'Alice.view.student.AddModel',
+		'Alice.view.teacher.AddController',
+		'Alice.view.teacher.AddModel',
 		'Alice.model.Class'
 	],
 
-    controller: 'studentadd',
+    controller: 'teacheradd',
     viewModel: {
-        type: 'studentadd'
+        type: 'teacheradd'
     },
 
-	title: 'Add a new student',
+	title: 'Add a new teacher',
 
 	layout: 'fit',
 
 	defaultFocus: 'firstName',
 
 	initComponent: function () {
-		var classesStore = Ext.create('Ext.data.Store', {
-			model: 'Alice.model.Class',
-			autoLoad: true
-		});
-
 		this.items = [
 			{
 				xtype: 'form',
@@ -40,8 +35,8 @@ Ext.define('Alice.view.student.Add', {
 				defaultType: 'textfield',
 				buttons: [
 					{
-						text: 'Create student',
-						handler: 'onCreateStudent'
+						text: 'Create teacher',
+						handler: 'onCreateTeacher'
 					},
 					{
 						text: 'Cancel',
@@ -61,17 +56,6 @@ Ext.define('Alice.view.student.Add', {
 						fieldLabel: 'Last name',
 						name: 'lastName',
 						reference: 'lastNameField'
-					},
-					{
-						xtype: 'combo',
-						fieldLabel: 'Class',
-						reference: 'classField',
-						name: 'class',
-						store: classesStore,
-						displayField: 'label',
-						valueField: 'id',
-						queryParam: false,
-						value: this.classId
 					},
 					{
 						allowBlank: false,

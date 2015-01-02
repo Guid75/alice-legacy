@@ -30,5 +30,9 @@ Ext.define('Alice.view.main.MainController', {
 
 	addClass: function () {
 		this.fireEvent('classAddClass');
+	},
+
+	addTeacher: function () {
+		this.fireEvent('teacherAddTeacher');
 	}
 });
