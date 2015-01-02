@@ -9,8 +9,7 @@ Ext.define('Alice.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
     requires: [
-        'Ext.window.MessageBox',
-		'Alice.view.student.Add'
+        'Ext.window.MessageBox'
     ],
 
     alias: 'controller.main',
@@ -25,7 +24,11 @@ Ext.define('Alice.view.main.MainController', {
         }
     },
 
-	addStudent: function (button) {
+	addStudent: function () {
 		this.fireEvent('studentAddStudent');
+	},
+
+	addClass: function () {
+		this.fireEvent('classAddClass');
 	}
 });

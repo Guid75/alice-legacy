@@ -14,7 +14,8 @@ Ext.define('Alice.Application', {
     ],
 
 	controllers: [
-		'Student'
+		'Student',
+		'Class'
 	],
 
     launch: function () {

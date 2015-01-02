@@ -49,7 +49,8 @@ Ext.define('Alice.view.main.Main', {
 				},
 				{
 					xtype: 'button',
-					text: 'Create class'
+					text: 'Create class',
+					handler: 'addClass'
 				}
 			],
 			layout: 'border',
