@@ -1,11 +1,11 @@
-Ext.define('Alice.view.classes.Classes', {
+Ext.define('Alice.view.class.Classes', {
     extend: 'Ext.panel.Panel',
 	alias: 'widget.ClassesView',
 	xtype: 'classesview',
 	requires: [
 		'Alice.view.formation.Formation',
 		'Alice.model.Class',
-		'Alice.view.classes.ClassesController',
+		'Alice.view.class.ClassesController',
 		'Alice.store.Classes',
 		'Alice.view.student.Tree'
 	],

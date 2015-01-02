@@ -13,7 +13,7 @@ Ext.define('Alice.view.main.Main', {
 		'Alice.store.Navigation',
 		'Alice.view.student.Tree',
 		'Alice.view.teacher.Teachers',
-		'Alice.view.classes.Classes'
+		'Alice.view.class.Classes'
     ],
 
     xtype: 'app-main',

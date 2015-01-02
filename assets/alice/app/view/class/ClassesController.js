@@ -1,4 +1,4 @@
-Ext.define('Alice.view.classes.ClassesController', {
+Ext.define('Alice.view.class.ClassesController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.classes',
 	requires: [
