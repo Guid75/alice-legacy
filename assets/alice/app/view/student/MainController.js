@@ -11,6 +11,7 @@ Ext.define('Alice.view.student.MainController', {
 				selectionchange: function (cmp, node) {
 					if (node.get('classId')) {
 						this.getView().getLayout().setActiveItem('detailformation');
+						Ext.ComponentQuery.query('#detailformation')[0].setCurrentFormation(node.get('classId'));
 					} else {
 						this.getView().getLayout().setActiveItem('allformations');
 					}

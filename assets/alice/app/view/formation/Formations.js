@@ -5,8 +5,7 @@ Ext.define('Alice.view.formation.Formations', {
 	requires: [
 		'Alice.model.Formation',
 		'Alice.view.formation.FormationsController',
-		'Alice.store.Formations',
-		'Alice.view.student.Tree'
+		'Alice.store.Formations'
 	],
 	controller: 'formations',
 	layout: {

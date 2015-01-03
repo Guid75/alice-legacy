@@ -13,9 +13,5 @@ Ext.define('Alice.view.teacher.Teachers', {
         { text: 'Last name', dataIndex: 'lastName', flex: 1 }
     ],
 
-	store: 'Teachers',
-
-	initComponent: function () {
-		this.callParent(arguments);
-	}
+	store: 'Teachers'
 });

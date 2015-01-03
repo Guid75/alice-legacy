@@ -4,6 +4,7 @@ Ext.define('Alice.view.student.Main', {
     requires: [
 		'Ext.toolbar.Breadcrumb',
 		'Alice.view.formation.Formations',
+		'Alice.view.formation.Formation',
 		'Alice.view.student.MainController'
     ],
 
@@ -53,7 +54,7 @@ Ext.define('Alice.view.student.Main', {
 					itemId: 'allformations'
 				},
 				{
-					html: 'detail formation',
+					xtype: 'formation',
 					itemId: 'detailformation'
 				}
 			]
