@@ -1,26 +1,25 @@
-Ext.define('Alice.controller.Student', {
+Ext.define('Alice.controller.Formation', {
     extend: 'Ext.app.Controller',
 
 	requires: [
-		'Alice.view.student.Add'
+		'Alice.view.formation.Add'
 	],
 
     init: function () {
         this.listen({
             controller: {
                 '*': {
-                    studentAddStudent: this.addStudent
+                    formationAddFormation: this.addFormation
                 }
             }
         });
     },
 
-	addStudent: function (classId) {
-		Ext.create('Alice.view.student.Add', {
+	addFormation: function () {
+		Ext.create('Alice.view.formation.Add', {
 			modal: true,
-			classId: classId,
 			listeners: {
-				studentCreated: function () {
+				formationCreated: function () {
 					Alice.getApplication().getStore('Formations').load();
 				}
 			}

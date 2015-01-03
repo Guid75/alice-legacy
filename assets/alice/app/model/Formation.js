@@ -1,4 +1,4 @@
-Ext.define('Alice.model.Class', {
+Ext.define('Alice.model.Formation', {
 	extend: 'Ext.data.Model',
 	fields: [
 		'label'

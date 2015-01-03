@@ -1,13 +1,13 @@
-Ext.define('Alice.view.class.ClassesController', {
+Ext.define('Alice.view.formation.FormationsController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.classes',
+    alias: 'controller.formations',
 	requires: [
 		'Alice.view.student.Add'
 	],
 	init: function () {
 		this.control({
-			'classesview': {
-				studentremoved: function (classesview, studentId) {
+			'formationsview': {
+				studentremoved: function (view, studentId) {
 					this.removeStudent(studentId);
 				}.bind(this)
 			}
@@ -25,7 +25,7 @@ Ext.define('Alice.view.class.ClassesController', {
 		student.drop();
 		student.save({
 			callback: function () {
-				Alice.getApplication().getStore('Classes').load();
+				Alice.getApplication().getStore('Formations').load();
 			}.bind(this)
 		});
 	}

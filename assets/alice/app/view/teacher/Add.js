@@ -5,7 +5,7 @@ Ext.define('Alice.view.teacher.Add', {
 	requires: [
 		'Alice.view.teacher.AddController',
 		'Alice.view.teacher.AddModel',
-		'Alice.model.Class'
+		'Alice.model.Formation'
 	],
 
     controller: 'teacheradd',

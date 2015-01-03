@@ -1,15 +1,14 @@
-Ext.define('Alice.view.class.Classes', {
+Ext.define('Alice.view.formation.Formations', {
     extend: 'Ext.panel.Panel',
-	alias: 'widget.classes',
-	xtype: 'classesview',
+	alias: 'widget.formations',
+	xtype: 'formationsview',
 	requires: [
-		'Alice.view.formation.Formation',
-		'Alice.model.Class',
-		'Alice.view.class.ClassesController',
-		'Alice.store.Classes',
+		'Alice.model.Formation',
+		'Alice.view.formation.FormationsController',
+		'Alice.store.Formations',
 		'Alice.view.student.Tree'
 	],
-	controller: 'classes',
+	controller: 'formations',
 	layout: {
 		type: 'table',
         columns: 3,
@@ -21,11 +20,11 @@ Ext.define('Alice.view.class.Classes', {
 		frame: true
 	},
 
-	_refreshClasses: function () {
+	_refreshFormations: function () {
 		var
 		me = this,
 		items = [];
-		Alice.getApplication().getStore('Classes').each(function (record) {
+		Alice.getApplication().getStore('Formations').each(function (record) {
 			items.push({
 				xtype: 'panel',
 				cls: 'student-class',
@@ -64,14 +63,14 @@ Ext.define('Alice.view.class.Classes', {
 
 	afterRender: function () {
 		// maybe the store is loaded?
-//		this._refreshClasses();
+//		this._refreshFormations();
 
 		this.callParent();
 	},
 
 	initComponent: function () {
-		Alice.getApplication().getStore('Classes').on('load', function () {
-			this._refreshClasses();
+		Alice.getApplication().getStore('Formations').on('load', function () {
+			this._refreshFormations();
 		}.bind(this));
 
 		this.on('afterrender', function () {

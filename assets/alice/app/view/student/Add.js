@@ -5,7 +5,7 @@ Ext.define('Alice.view.student.Add', {
 	requires: [
 		'Alice.view.student.AddController',
 		'Alice.view.student.AddModel',
-		'Alice.model.Class'
+		'Alice.model.Formation'
 	],
 
     controller: 'studentadd',
@@ -20,8 +20,8 @@ Ext.define('Alice.view.student.Add', {
 	defaultFocus: 'firstName',
 
 	initComponent: function () {
-		var classesStore = Ext.create('Ext.data.Store', {
-			model: 'Alice.model.Class',
+		var formationsStore = Ext.create('Ext.data.Store', {
+			model: 'Alice.model.Formation',
 			autoLoad: true
 		});
 
@@ -67,7 +67,7 @@ Ext.define('Alice.view.student.Add', {
 						fieldLabel: 'Class',
 						reference: 'classField',
 						name: 'class',
-						store: classesStore,
+						store: formationsStore,
 						displayField: 'label',
 						valueField: 'id',
 						queryParam: false,

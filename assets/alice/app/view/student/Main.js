@@ -3,12 +3,17 @@ Ext.define('Alice.view.student.Main', {
 	alias: 'widget.students',
     requires: [
 		'Ext.toolbar.Breadcrumb',
-		'Alice.view.class.Classes'
+		'Alice.view.formation.Formations',
+		'Alice.view.student.MainController'
     ],
+
+	controller: 'students',
+
+	layout: 'card',
 
 	_refreshBreadStore: function () {
 		var root = {
-			text: 'Classes',
+			text: 'Formations',
 			expanded: true,
 			children: []
 		};
@@ -17,19 +22,18 @@ Ext.define('Alice.view.student.Main', {
 			this._breadStore = Ext.create('Ext.data.TreeStore', {});
 		}
 
-		Alice.getApplication().getStore('Classes').each(function (record) {
+		Alice.getApplication().getStore('Formations').each(function (record) {
 			root.children.push({
 				text: record.get('label'),
+				classId: record.get('id'),
 				leaf: true
 			});
 		});
 		this._breadStore.setRoot(root);
 	},
 
-	layout: 'fit',
-
 	initComponent: function () {
-		Alice.getApplication().getStore('Classes').on('load', function () {
+		Alice.getApplication().getStore('Formations').on('load', function () {
 			this._refreshBreadStore();
 		}.bind(this));
 
@@ -45,7 +49,12 @@ Ext.define('Alice.view.student.Main', {
 			],
 			items: [
 				{
-					xtype: 'classes'
+					xtype: 'formations',
+					itemId: 'allformations'
+				},
+				{
+					html: 'detail formation',
+					itemId: 'detailformation'
 				}
 			]
 		});

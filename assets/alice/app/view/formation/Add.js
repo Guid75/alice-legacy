@@ -1,18 +1,18 @@
-Ext.define('Alice.view.class.Add', {
+Ext.define('Alice.view.formation.Add', {
     extend: 'Ext.window.Window',
 
-	alias: 'widget.classadd',
+	alias: 'widget.formationadd',
 	requires: [
-		'Alice.view.class.AddController',
-		'Alice.view.class.AddModel'
+		'Alice.view.formation.AddController',
+		'Alice.view.formation.AddModel'
 	],
 
-    controller: 'classadd',
+    controller: 'formationadd',
     viewModel: {
-        type: 'classadd'
+        type: 'formationadd'
     },
 
-	title: 'Add a new class',
+	title: 'Add a new formation',
 
 	layout: 'fit',
 
@@ -34,8 +34,8 @@ Ext.define('Alice.view.class.Add', {
 				defaultType: 'textfield',
 				buttons: [
 					{
-						text: 'Create class',
-						handler: 'onCreateClass'
+						text: 'Create formation',
+						handler: 'onCreateFormation'
 					},
 					{
 						text: 'Cancel',

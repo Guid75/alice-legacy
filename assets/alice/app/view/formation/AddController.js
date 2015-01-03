@@ -1,21 +1,21 @@
-Ext.define('Alice.view.class.AddController', {
+Ext.define('Alice.view.formation.AddController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.classadd',
+    alias: 'controller.formationadd',
 	requires: [
-		'Alice.model.Class'
+		'Alice.model.Formation'
 	],
 
 	onCancel: function () {
 		this.closeView();
 	},
-	onCreateClass: function () {
+	onCreateFormation: function () {
 		var store = Ext.create('Ext.data.Store', {
-			model: 'Alice.model.Class'
+			model: 'Alice.model.Formation'
 		});
 		store.add({ label: this.lookupReference('labelField').getValue() });
 		store.sync({
 			success: function () {
-				this.getView().fireEvent('classCreated');
+				this.getView().fireEvent('formationCreated');
 				this.closeView();
 			}.bind(this)
 		});

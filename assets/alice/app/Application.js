@@ -9,13 +9,13 @@ Ext.define('Alice.Application', {
     name: 'Alice',
 
     stores: [
-		'Classes',
+		'Formations',
 		'Teachers'
     ],
 
 	controllers: [
 		'Student',
-		'Class',
+		'Formation',
 		'Teacher'
 	],
 

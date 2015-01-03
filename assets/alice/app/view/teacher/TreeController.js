@@ -3,7 +3,7 @@ Ext.define('Alice.view.teacher.TreeController', {
     alias: 'controller.teachertree',
 
 	requires: [
-		'Alice.store.Classes',
+		'Alice.store.Formations',
 		'Alice.String'
 	],
 

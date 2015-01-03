@@ -7,7 +7,7 @@ Ext.define('Alice.view.student.Tree', {
 		'Ext.tree.Panel',
 		'Alice.view.student.TreeModel',
 		'Alice.view.student.TreeController',
-		'Alice.store.Classes'
+		'Alice.store.Formations'
 	],
 
     controller: 'studenttree',
@@ -41,7 +41,7 @@ Ext.define('Alice.view.student.Tree', {
 			expanded: true,
 			children: []
 		};
-		Alice.getApplication().getStore('Classes').each(function (record) {
+		Alice.getApplication().getStore('Formations').each(function (record) {
 			var children = [];
 			record.students().each(function (student) {
 				children.push({
@@ -69,7 +69,7 @@ Ext.define('Alice.view.student.Tree', {
 
 		this.store = treeStore;
 
-		Alice.getApplication().getStore('Classes').on('load', function () {
+		Alice.getApplication().getStore('Formations').on('load', function () {
 			this._refreshTree();
 		}.bind(this));
 

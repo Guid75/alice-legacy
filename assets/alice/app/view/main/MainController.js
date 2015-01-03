@@ -28,8 +28,8 @@ Ext.define('Alice.view.main.MainController', {
 		this.fireEvent('studentAddStudent');
 	},
 
-	addClass: function () {
-		this.fireEvent('classAddClass');
+	addFormation: function () {
+		this.fireEvent('formationAddFormation');
 	},
 
 	addTeacher: function () {
