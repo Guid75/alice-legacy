@@ -1,6 +1,6 @@
 Ext.define('Alice.view.class.Classes', {
     extend: 'Ext.panel.Panel',
-	alias: 'widget.ClassesView',
+	alias: 'widget.classes',
 	xtype: 'classesview',
 	requires: [
 		'Alice.view.formation.Formation',

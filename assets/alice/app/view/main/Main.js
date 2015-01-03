@@ -10,10 +10,10 @@ Ext.define('Alice.view.main.Main', {
     requires: [
         'Alice.view.main.MainController',
         'Alice.view.main.MainModel',
-		'Alice.store.Navigation',
+		'Alice.view.student.Main',
 		'Alice.view.student.Tree',
 		'Alice.view.teacher.Teachers',
-		'Alice.view.class.Classes'
+		'Alice.view.teacher.Tree'
     ],
 
     xtype: 'app-main',
@@ -26,7 +26,6 @@ Ext.define('Alice.view.main.Main', {
 	layout: 'fit',
 
 	initComponent: function () {
-		var store = new Alice.store.Navigation();
 		this.items = {
 			xtype: 'panel',
 			bind: {
@@ -83,7 +82,6 @@ Ext.define('Alice.view.main.Main', {
 				{
 					region: 'center',
 					xtype: 'tabpanel',
-					//						title: 'Center panel',
 					items: [
 						{
 							title: 'Workshops',
@@ -91,16 +89,7 @@ Ext.define('Alice.view.main.Main', {
 						},
 						{
 							title: 'Students',
-							tbar: [
-								{
-									xtype: 'breadcrumb',
-									store: store,
-									showIcons: true// ,
-									// // Start with "Ext JS > dd > DragZone.js" selected
-									// selection: store.getRoot().childNodes[4].childNodes[7]
-								}
-							],
-							xtype: 'ClassesView'
+							xtype: 'students'
 						},
 						{
 							title: 'Teachers',
