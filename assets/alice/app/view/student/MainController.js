@@ -11,12 +11,31 @@ Ext.define('Alice.view.student.MainController', {
 				selectionchange: function (cmp, node) {
 					if (node.get('classId')) {
 						this.getView().getLayout().setActiveItem('detailformation');
-						Ext.ComponentQuery.query('#detailformation')[0].setCurrentFormation(node.get('classId'));
+						this.lookupReference('detailformation').setCurrentFormation(node.get('classId'));
 					} else {
 						this.getView().getLayout().setActiveItem('allformations');
 					}
 				}.bind(this)
+			},
+			'formations': {
+				selectFormationDetail: this.selectFormationDetail
 			}
 		});
+	},
+
+	selectFormationDetail: function (classId) {
+		var
+		breadcrumb = this.lookupReference('breadcrumb'),
+		i,
+		node,
+		root = breadcrumb.getStore().getRoot();
+
+		for (i = 0; i < root.childNodes.length; i++) {
+			node = root.childNodes[i];
+			if (+node.get('classId') === +classId) {
+				breadcrumb.setSelection(node);
+				break;
+			}
+		}
 	}
 });

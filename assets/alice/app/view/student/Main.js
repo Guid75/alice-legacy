@@ -45,16 +45,19 @@ Ext.define('Alice.view.student.Main', {
 				{
 					xtype: 'breadcrumb',
 					store: this._breadStore,
-					showIcons: true
+					showIcons: true,
+					reference: 'breadcrumb'
 				}
 			],
 			items: [
 				{
 					xtype: 'formations',
+					reference: 'allformations',
 					itemId: 'allformations'
 				},
 				{
 					xtype: 'formation',
+					reference: 'detailformation',
 					itemId: 'detailformation'
 				}
 			]

@@ -27,7 +27,7 @@ Ext.define('Alice.view.formation.Formations', {
 			items.push({
 				xtype: 'panel',
 				cls: 'student-class',
-				title: record.get('label'),
+				title: '<span class="alice-class-title" formation-id="' + record.id + '">' + record.get('label') + '</span>',
 				tools: [
 					{
 						xtype: 'button',
@@ -60,6 +60,12 @@ Ext.define('Alice.view.formation.Formations', {
 		}
 	},
 
+	onFormationTitleClick: function (ev, t) {
+		var formationId = Ext.fly(t).getAttribute('formation-id');
+
+		this.fireEvent('selectFormationDetail', formationId);
+	},
+
 	afterRender: function () {
 		// maybe the store is loaded?
 //		this._refreshFormations();
@@ -74,6 +80,7 @@ Ext.define('Alice.view.formation.Formations', {
 
 		this.on('afterrender', function () {
 			this.mon(this.el, 'click', this.onStudentClick, this, { delegate: 'div.alice-class-student' });
+			this.mon(this.el, 'click', this.onFormationTitleClick, this, { delegate: 'span.alice-class-title' });
 		});
 
 		this.callParent(arguments);
