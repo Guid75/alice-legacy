@@ -39,7 +39,9 @@ Ext.define('Alice.view.formation.Formation', {
 		{
 			xtype: 'button',
 			text: 'Remove',
-			handler: 'removeCurrentStudent'
+			reference: 'removeButton',
+			handler: 'removeCurrentStudent',
+			disabled: true
 		}
 	],
 

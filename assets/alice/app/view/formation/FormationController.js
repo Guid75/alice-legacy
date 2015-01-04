@@ -6,13 +6,11 @@ Ext.define('Alice.view.formation.FormationController', {
 		'Alice.model.Student'
 	],
 	init: function () {
-		// this.control({
-		// 	'formationsview': {
-		// 		studentremoved: function (view, studentId) {
-		// 			this.removeStudent(studentId);
-		// 		}.bind(this)
-		// 	}
-		// });
+		this.control({
+			'formationview': {
+				'selectionchange': this.gridSelectionChanged
+			}
+		});
 	},
 	addStudent: function () {
 		this.fireEvent('studentAddStudent', this.getView().classId);
@@ -38,5 +36,8 @@ Ext.define('Alice.view.formation.FormationController', {
  				Alice.getApplication().getStore('Formations').load();
  			}.bind(this)
  		});
+	},
+	gridSelectionChanged: function (grid, selected) {
+		this.lookupReference('removeButton').setDisabled(selected.length === 0);
 	}
 });
