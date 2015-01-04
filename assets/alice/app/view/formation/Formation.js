@@ -38,9 +38,18 @@ Ext.define('Alice.view.formation.Formation', {
 		},
 		{
 			xtype: 'button',
-			text: 'Remove'
+			text: 'Remove',
+			handler: 'removeCurrentStudent'
 		}
 	],
+
+	initComponent: function () {
+		Alice.getApplication().getStore('Formations').on('load', function () {
+			this.setCurrentFormation(this.classId);
+		}.bind(this));
+
+		this.callParent(arguments);
+	},
 
 	setCurrentFormation: function (classId) {
 		var
