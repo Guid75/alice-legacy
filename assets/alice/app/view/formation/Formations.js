@@ -40,6 +40,11 @@ Ext.define('Alice.view.formation.Formations', {
 				data: record.getData({ associated: true })
 			});
 		});
+		items.push({
+			xtype: 'button',
+			text: 'Create a new formation',
+			handler: 'addFormation'
+		});
 		this.removeAll();
 		this.add(items);
 	},

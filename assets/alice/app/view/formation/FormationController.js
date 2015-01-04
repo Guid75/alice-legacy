@@ -13,8 +13,8 @@ Ext.define('Alice.view.formation.FormationController', {
 		// 	}
 		// });
 	},
-	addStudent: function (button) {
-		// this.fireEvent('studentAddStudent', button.record.getId());
+	addStudent: function () {
+		this.fireEvent('studentAddStudent', this.getView().classId);
 	},
 	removeStudent: function (studentId) {
 // 		var

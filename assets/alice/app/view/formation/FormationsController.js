@@ -28,5 +28,8 @@ Ext.define('Alice.view.formation.FormationsController', {
 				Alice.getApplication().getStore('Formations').load();
 			}.bind(this)
 		});
+	},
+	addFormation: function () {
+		this.fireEvent('formationAddFormation');
 	}
 });

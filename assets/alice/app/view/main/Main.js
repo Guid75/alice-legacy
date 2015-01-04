@@ -31,32 +31,6 @@ Ext.define('Alice.view.main.Main', {
 			bind: {
 				title: '{name}'
 			},
-			tbar: [
-				{
-					xtype: 'splitbutton',
-					text: 'Student',
-					handler: 'addStudent',
-					menu: [
-						{
-							text: 'Create a student',
-							handler: 'addStudent'
-						},
-						{
-							text: 'Import...'
-						}
-					]
-				},
-				{
-					xtype: 'button',
-					text: 'Create formation',
-					handler: 'addFormation'
-				},
-				{
-					xtype: 'button',
-					text: 'Create a teacher',
-					handler: 'addTeacher'
-				}
-			],
 			layout: 'border',
 			items: [
 				{

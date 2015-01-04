@@ -20,6 +20,7 @@ Ext.define('Alice.view.student.Tree', {
 	tbar: [
 		{
 			xtype: 'textfield',
+			emptyText: 'Search',
 			flex: 1,
 			listeners: {
 				change: 'studentFilterChanged'

@@ -22,17 +22,5 @@ Ext.define('Alice.view.main.MainController', {
         if (choice === 'yes') {
             //
         }
-    },
-
-	addStudent: function () {
-		this.fireEvent('studentAddStudent');
-	},
-
-	addFormation: function () {
-		this.fireEvent('formationAddFormation');
-	},
-
-	addTeacher: function () {
-		this.fireEvent('teacherAddTeacher');
-	}
+    }
 });

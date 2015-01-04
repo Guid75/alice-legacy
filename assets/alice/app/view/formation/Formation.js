@@ -17,9 +17,35 @@ Ext.define('Alice.view.formation.Formation', {
         { text: 'Last name', dataIndex: 'lastName', flex: 1 }
     ],
 
+	tbar: [
+		{
+			xtype: 'textfield',
+			emptyText: 'Search'
+		},
+		{
+			xtype: 'splitbutton',
+			text: 'Add',
+			handler: 'addStudent',
+			menu: [
+				{
+					text: 'Create a student',
+					handler: 'addStudent'
+				},
+				{
+					text: 'Import...'
+				}
+			]
+		},
+		{
+			xtype: 'button',
+			text: 'Remove'
+		}
+	],
+
 	setCurrentFormation: function (classId) {
 		var
 		record = Alice.getApplication().getStore('Formations').getById(classId);
+		this.classId = classId;
 		this.setStore(record.students());
 	}
 });
