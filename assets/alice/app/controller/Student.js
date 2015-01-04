@@ -20,7 +20,8 @@ Ext.define('Alice.controller.Student', {
 			modal: true,
 			classId: classId,
 			listeners: {
-				studentCreated: function () {
+				studentCreated: function (studentLabel) {
+					Ext.toast('Student "' + studentLabel + '" created', 'Success', 't');
 					Alice.getApplication().getStore('Formations').load();
 				}
 			}

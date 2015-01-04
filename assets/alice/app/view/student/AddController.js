@@ -59,16 +59,20 @@ Ext.define('Alice.view.student.AddController', {
 		this.closeView();
 	},
 	onCreateStudent: function () {
-		var store = Ext.create('Ext.data.Store', {
+		var
+		store = Ext.create('Ext.data.Store', {
 			model: 'Alice.model.Student'
-		});
+		}),
+		studentLabel = this.lookupReference('firstNameField').getValue() + ' ' +
+			this.lookupReference('lastNameField').getValue();
+
 		store.add({ firstName: this.lookupReference('firstNameField').getValue(),
 					lastName: this.lookupReference('lastNameField').getValue(),
 					class: this.lookupReference('classField').getValue(),
 					login: this.lookupReference('loginField').getValue() });
 		store.sync({
 			success: function () {
-				this.getView().fireEvent('studentCreated');
+				this.getView().fireEvent('studentCreated', studentLabel);
 				this.closeView();
 			}.bind(this)
 		});

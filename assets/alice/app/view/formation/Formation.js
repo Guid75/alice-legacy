@@ -47,16 +47,20 @@ Ext.define('Alice.view.formation.Formation', {
 
 	initComponent: function () {
 		Alice.getApplication().getStore('Formations').on('load', function () {
-			this.setCurrentFormation(this.classId);
+			if (this.classId !== undefined) {
+ 				this.setCurrentFormation(this.classId);
+			}
 		}.bind(this));
 
 		this.callParent(arguments);
 	},
 
 	setCurrentFormation: function (classId) {
-		var
-		record = Alice.getApplication().getStore('Formations').getById(classId);
 		this.classId = classId;
-		this.setStore(record.students());
+		Alice.model.Formation.load(classId, {
+			success: function (formation) {
+				this.setStore(formation.students());
+			}.bind(this)
+		});
 	}
 });
