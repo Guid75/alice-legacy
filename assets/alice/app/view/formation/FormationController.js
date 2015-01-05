@@ -39,5 +39,13 @@ Ext.define('Alice.view.formation.FormationController', {
 	},
 	gridSelectionChanged: function (grid, selected) {
 		this.lookupReference('removeButton').setDisabled(selected.length === 0);
+	},
+	studentFilterChanged: function (field, newValue) {
+		// TODO: filter values
+		this.getView().getStore().load({
+			params: {
+				where: Ext.String.format('{"class":"{0}","or":[{"firstName":{"contains":"{1}"}},{"lastName":{"contains":"{1}"}}]}', this.getView().classId, newValue)
+			}
+		});
 	}
 });

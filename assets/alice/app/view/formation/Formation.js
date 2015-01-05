@@ -20,7 +20,10 @@ Ext.define('Alice.view.formation.Formation', {
 	tbar: [
 		{
 			xtype: 'textfield',
-			emptyText: 'Search'
+			emptyText: 'Search',
+			listeners: {
+				change: 'studentFilterChanged'
+			}
 		},
 		{
 			xtype: 'splitbutton',
