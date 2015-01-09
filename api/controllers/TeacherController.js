@@ -7,6 +7,7 @@
 
 module.exports = {
 	find: function (req, res) {
+		var where;
 		delete req.query['_dc'];
 		delete req.query['page'];
 		// TODO convert extjs pagination to sails pagination
@@ -14,7 +15,12 @@ module.exports = {
 			req.query['skip'] = req.query['start'];
 			delete req.query['start'];
 		}
-		Teacher.find({ where: req.query }).then(function (data) {
+		if (req.query['where']) {
+			where = JSON.parse(req.query['where']);
+		} else {
+			where = req.query;
+		}
+		Teacher.find({ where: where }).then(function (data) {
 			res.send(data);
 		});
 	}

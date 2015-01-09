@@ -7,6 +7,38 @@ Ext.define('Alice.view.teacher.Teachers', {
 		'Alice.store.Teachers'
 	],
 	controller: 'teachers',
+	xtype: 'teachersview',
+
+	tbar: [
+		{
+			xtype: 'textfield',
+			emptyText: 'Search',
+			listeners: {
+				change: 'teacherFilterChanged'
+			}
+		},
+		{
+			xtype: 'splitbutton',
+			text: 'Add',
+			handler: 'addTeacher',
+			menu: [
+				{
+					text: 'Create a teacher',
+					handler: 'addTeacher'
+				},
+				{
+					text: 'Import...'
+				}
+			]
+		},
+		{
+			xtype: 'button',
+			text: 'Remove',
+			reference: 'removeButton',
+			handler: 'removeCurrentTeacher',
+			disabled: true
+		}
+	],
 
     columns: [
         { text: 'First name',  dataIndex: 'firstName' },
