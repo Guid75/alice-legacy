@@ -2,7 +2,8 @@ Ext.define('Alice.controller.Student', {
     extend: 'Ext.app.Controller',
 
 	requires: [
-		'Alice.view.student.Add'
+		'Alice.view.student.Add',
+		'Ext.window.Toast'
 	],
 
     init: function () {
