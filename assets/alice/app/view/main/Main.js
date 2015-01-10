@@ -3,7 +3,6 @@
  * "autoCreateViewport" property. That setting automatically applies the "viewport"
  * plugin to promote that instance of this class to the body element.
  *
- * TODO - Replace this content of this view to suite the needs of your application.
  */
 Ext.define('Alice.view.main.Main', {
     extend: 'Ext.container.Container',
@@ -13,7 +12,8 @@ Ext.define('Alice.view.main.Main', {
 		'Alice.view.student.Main',
 		'Alice.view.student.Tree',
 		'Alice.view.teacher.Teachers',
-		'Alice.view.teacher.Tree'
+		'Alice.view.teacher.Tree',
+		'Alice.view.workshops.Main'
     ],
 
     xtype: 'app-main',
@@ -59,7 +59,7 @@ Ext.define('Alice.view.main.Main', {
 					items: [
 						{
 							title: 'Workshops',
-							html: 'here are defined workshops'
+							xtype: 'workshops'
 						},
 						{
 							title: 'Students',
