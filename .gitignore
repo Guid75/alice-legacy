@@ -119,3 +119,5 @@ nbproject
 /assets/vendor/
 /assets/ext/
 .tern-port
+/assets/build/temp/
+/assets/build/.sass-cache/

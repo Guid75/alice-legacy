@@ -3,7 +3,8 @@ Ext.define('Alice.view.workshops.Main', {
 	alias: 'widget.workshops',
 	requires: [
 		'Ext.tab.Panel',
-		'Alice.view.workshops.MainController'
+		'Alice.view.workshops.MainController',
+		'Alice.view.period.Main'
 	],
 	controller: 'workshops',
 
@@ -13,8 +14,8 @@ Ext.define('Alice.view.workshops.Main', {
 			html: 'Here are defined sessions'
 		},
 		{
-			title: 'Periods',
-			html: 'Here are defined periods'
+			xtype: 'period-main',
+			title: 'Periods'
 		}
 	]
 });

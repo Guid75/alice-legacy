@@ -27,7 +27,6 @@ Ext.define('Alice.view.teacher.TeachersController', {
 	removeCurrentTeacher: function () {
 		var
 		selection = this.getView().getSelection(),
-		teacher,
 		selected;
 
 		if (selection.length === 0) {

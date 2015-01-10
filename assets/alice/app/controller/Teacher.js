@@ -15,7 +15,7 @@ Ext.define('Alice.controller.Teacher', {
         });
     },
 
-	addTeacher: function (classId) {
+	addTeacher: function () {
 		Ext.create('Alice.view.teacher.Add', {
 			modal: true,
 			listeners: {
