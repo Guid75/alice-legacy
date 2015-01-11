@@ -9,13 +9,13 @@ Ext.define('Alice.view.period.AddController', {
 	},
 	onCreatePeriod: function () {
 		var store = Alice.getApplication().getStore('Periods');
-		store.add({
+		var r = store.add({
 			startDate: this.lookupReference('startDateField').getValue(),
 			endDate: this.lookupReference('endDateField').getValue()
 		});
+
 		store.sync({
 			success: function () {
-//				this.getView().fireEvent('periodCreated');
 				this.closeView();
 			}.bind(this)
 		});

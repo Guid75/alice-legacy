@@ -9,6 +9,7 @@ Ext.define('Alice.view.period.MainController', {
 		});
 	},
 	gridSelectionChanged: function (grid, selected) {
+		console.log(selected.length);
 		this.lookupReference('removeButton').setDisabled(selected.length === 0);
 	},
 	addPeriod: function () {
