@@ -4,14 +4,16 @@ Ext.define('Alice.view.workshops.Main', {
 	requires: [
 		'Ext.tab.Panel',
 		'Alice.view.workshops.MainController',
+		'Alice.view.session.Main',
+		'Alice.view.timeslot.Main',
 		'Alice.view.period.Main'
 	],
 	controller: 'workshops',
 
 	items: [
 		{
-			title: 'Sessions',
-			html: 'Here are defined sessions'
+			xtype: 'timeslot-main',
+			title: 'Time slots'
 		},
 		{
 			xtype: 'period-main',

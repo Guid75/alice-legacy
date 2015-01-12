@@ -11,14 +11,16 @@ Ext.define('Alice.Application', {
     stores: [
 		'Formations',
 		'Teachers',
-		'Periods'
+		'Periods',
+		'Timeslots'
     ],
 
 	controllers: [
 		'Student',
 		'Formation',
 		'Teacher',
-		'Period'
+		'Period',
+		'Timeslot'
 	],
 
     launch: function () {
