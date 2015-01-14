@@ -17,6 +17,7 @@ Ext.define('Alice.view.timeslot.Main',{
 	items: [
 		{
 			xtype: 'grid',
+			reference: 'timeslotsGrid',
 			tbar: [
 				{
 					xtype: 'button',
@@ -26,19 +27,18 @@ Ext.define('Alice.view.timeslot.Main',{
 				{
 					xtype: 'button',
 					text: 'Remove',
-					reference: 'removeButton',
+					reference: 'removeTimeslotButton',
 					handler: 'removeCurrentTimeslot',
 					disabled: true
 				}
 			],
 			region: 'west',
 			hideHeaders: true,
-			width: 200,
+			width: 230,
 			split: true,
 			columns: [
 				{ xtype: 'templatecolumn', tpl: Ext.create('Ext.XTemplate',
-														   // '{[Ext.Date.dayNames[values.weekDay]]}, from {[this.toTime(values.startTime)]} to {[this.toTime(values.endTime)]}', {
-														   '{[Ext.Date.dayNames[values.weekDay]]}, from {[this.toTime(values.startTime)]} to {[this.toTime(values.endTime)]}', {
+														   '{[Ext.Date.format(values.date, "F j, Y")]}, from {[this.toTime(values.startTime)]} to {[this.toTime(values.endTime)]}', {
 					toTime: function (s) {
 						var hours = Math.floor(s / 3600);
 						s %= 3600;

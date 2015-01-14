@@ -7,15 +7,11 @@
 
 module.exports = {
 	attributes: {
-		weekDay: {
-			type: 'integer',
+		date: {
+			type: 'datetime',
 			required: true
 		},
-		startTime: {
-			type: 'integer',
-			required: true
-		},
-		endTime: {
+		duration: {
 			type: 'integer',
 			required: true
 		}

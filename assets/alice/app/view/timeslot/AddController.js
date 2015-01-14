@@ -9,10 +9,13 @@ Ext.define('Alice.view.timeslot.AddController', {
 			return (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
 		}
 		var store = Alice.getApplication().getStore('Timeslots');
+		var date = this.lookupReference('dayField').getValue();
+		var startSec = toSec(this.lookupReference('startTimeField').getValue());
+		var endSec = toSec(this.lookupReference('endTimeField').getValue());
+		date.setSeconds(startSec);
 		var r = store.add({
-			weekDay: this.lookupReference('weekDayField').getValue(),
-			startTime: toSec(this.lookupReference('startTimeField').getValue()),
-			endTime: toSec(this.lookupReference('endTimeField').getValue())
+			date: date,
+			duration: endSec - startSec
 		});
 
 		store.sync({

@@ -5,5 +5,6 @@ Ext.define('Alice.store.Timeslots', {
 		'Alice.model.Timeslot'
 	],
 	model: 'Alice.model.Timeslot',
-	autoLoad: true
+	autoLoad: true,
+	sorters: 'date'
 });

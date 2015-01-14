@@ -15,18 +15,6 @@ Ext.define('Alice.view.timeslot.Add', {
     },
 
 	initComponent: function () {
-		var
-		weekDayDisplayTemplate = Ext.create('Ext.XTemplate',
-											'<tpl for=".">',
-											'{[Ext.Date.dayNames[values.field1]]}',
-											'</tpl>'
-										   ),
-		weekDayTemplate = Ext.create('Ext.XTemplate',
-									 '<tpl for=".">',
-									 '<div class="x-boundlist-item">{[Ext.Date.dayNames[xindex]]}</div>',
-									 '</tpl>'
-									);
-
 		this.items = [
 			{
 				xtype: 'form',
@@ -52,27 +40,24 @@ Ext.define('Alice.view.timeslot.Add', {
 				],
 				items: [
 					{
-						xtype: 'combo',
-						store: [1, 2, 3, 4, 5, 6, 7],
+						xtype: 'datefield',
 						allowBlank: false,
-						fieldLabel: 'Week day',
-						name: 'weekDay',
-						reference: 'weekDayField',
-						itemId: 'weekDay',
-						displayTpl: weekDayDisplayTemplate,
-						tpl: weekDayTemplate
+						fieldLabel: 'Day',
+						name: 'day',
+						reference: 'dayField',
+						itemId: 'day'
 					},
 					{
 						xtype: 'timefield',
 						allowBlank: false,
-						fieldLabel: 'Start time',
+						fieldLabel: 'From',
 						name: 'startTime',
 						reference: 'startTimeField'
 					},
 					{
 						xtype: 'timefield',
 						allowBlank: false,
-						fieldLabel: 'End time',
+						fieldLabel: 'To',
 						name: 'endTime',
 						reference: 'endTimeField'
 					}
