@@ -2,6 +2,10 @@ Ext.define('Alice.view.timeslot.AddController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.timeslot-add',
 	onCreateTimeslot: function () {
+		if (!this.lookupReference('form').isValid()) {
+			return;
+		}
+
 		function toSec(t) {
 			var hms = Ext.Date.format(t, 'H:i:s');
 			var a = hms.split(':');
@@ -18,15 +22,16 @@ Ext.define('Alice.view.timeslot.AddController', {
 			duration: endSec - startSec
 		});
 
-		r = store.add({
-			date: date,
-			duration: 100
-		});
-
 		store.sync({
 			success: function () {
 				this.closeView();
 			}.bind(this)
 		});
+	},
+	startTimeChanged: function (startTimeField) {
+		this.lookupReference('endTimeField').setMinValue(startTimeField.getValue());
+	},
+	endTimeChanged: function (endTimeField) {
+		this.lookupReference('startTimeField').setMaxValue(endTimeField.getValue());
 	}
 });

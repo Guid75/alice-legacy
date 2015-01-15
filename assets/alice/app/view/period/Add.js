@@ -24,6 +24,7 @@ Ext.define('Alice.view.period.Add', {
 		this.items = [
 			{
 				xtype: 'form',
+				reference: 'form',
 				fieldDefaults: {
 					labelAlign: 'right',
 					labelWidth: 115// ,
@@ -50,7 +51,10 @@ Ext.define('Alice.view.period.Add', {
 						fieldLabel: 'From',
 						name: 'startDate',
 						reference: 'startDateField',
-						itemId: 'startDate'
+						itemId: 'startDate',
+						listeners: {
+							'change': 'startDateChanged'
+						}
 					},
 					{
 						xtype: 'datefield',
@@ -58,7 +62,10 @@ Ext.define('Alice.view.period.Add', {
 						fieldLabel: 'To',
 						reference: 'endDateField',
 						name: 'endDate',
-						itemId: 'endDate'
+						itemId: 'endDate',
+						listeners: {
+							'change': 'endDateChanged'
+						}
 					}
 				]
 			}

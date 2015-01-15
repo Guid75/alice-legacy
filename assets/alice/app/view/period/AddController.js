@@ -8,6 +8,10 @@ Ext.define('Alice.view.period.AddController', {
 		this.closeView();
 	},
 	onCreatePeriod: function () {
+		if (!this.lookupReference('form').isValid()) {
+			return;
+		}
+
 		var store = Alice.getApplication().getStore('Periods');
 		var r = store.add({
 			startDate: this.lookupReference('startDateField').getValue(),
@@ -19,5 +23,11 @@ Ext.define('Alice.view.period.AddController', {
 				this.closeView();
 			}.bind(this)
 		});
+	},
+	startDateChanged: function (startDateField) {
+		this.lookupReference('endDateField').setMinValue(startDateField.getValue());
+	},
+	endDateChanged: function (endDateField) {
+		this.lookupReference('startDateField').setMaxValue(endDateField.getValue());
 	}
 });

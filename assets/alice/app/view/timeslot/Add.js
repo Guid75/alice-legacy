@@ -19,6 +19,7 @@ Ext.define('Alice.view.timeslot.Add', {
 		this.items = [
 			{
 				xtype: 'form',
+				reference: 'form',
 				fieldDefaults: {
 					labelAlign: 'right',
 					labelWidth: 115// ,
@@ -43,14 +44,20 @@ Ext.define('Alice.view.timeslot.Add', {
 						allowBlank: false,
 						fieldLabel: 'From',
 						name: 'startTime',
-						reference: 'startTimeField'
+						reference: 'startTimeField',
+						listeners: {
+							'change': 'startTimeChanged'
+						}
 					},
 					{
 						xtype: 'timefield',
 						allowBlank: false,
 						fieldLabel: 'To',
 						name: 'endTime',
-						reference: 'endTimeField'
+						reference: 'endTimeField',
+						listeners: {
+							'change': 'endTimeChanged'
+						}
 					},
 					{
 						xtype: 'checkbox',

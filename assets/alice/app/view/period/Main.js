@@ -29,7 +29,7 @@ Ext.define('Alice.view.period.Main', {
 				{
 					xtype: 'templatecolumn',
 					tpl: Ext.create('Ext.XTemplate',
-									'From {[Ext.Date.format(values.startDate, "F j, Y")]} to {[Ext.Date.format(values.endDate, "F j, Y")]}'
+									'From <b>{[Ext.Date.format(values.startDate, "F j, Y")]}</b> to <b>{[Ext.Date.format(values.endDate, "F j, Y")]}</b>'
 								   ),
 					flex: 1
 				}
