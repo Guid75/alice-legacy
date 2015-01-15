@@ -24,8 +24,14 @@ Ext.define('Alice.view.period.Main', {
 		}
 	],
 	store: 'Periods',
+	hideHeaders: true,
     columns: [
-        { text: 'Start date',  dataIndex: 'startDate', width: 200 },
-        { text: 'End date', dataIndex: 'endDate', flex: 1 }
+				{
+					xtype: 'templatecolumn',
+					tpl: Ext.create('Ext.XTemplate',
+									'From {[Ext.Date.format(values.startDate, "F j, Y")]} to {[Ext.Date.format(values.endDate, "F j, Y")]}'
+								   ),
+					flex: 1
+				}
     ]
 });

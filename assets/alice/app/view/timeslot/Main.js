@@ -37,16 +37,20 @@ Ext.define('Alice.view.timeslot.Main',{
 			width: 230,
 			split: true,
 			columns: [
-				{ xtype: 'templatecolumn', tpl: Ext.create('Ext.XTemplate',
-														   '{[Ext.Date.format(values.date, "F j, Y")]}, from {[this.toTime(values.startTime)]} to {[this.toTime(values.endTime)]}', {
-					toTime: function (s) {
-						var hours = Math.floor(s / 3600);
-						s %= 3600;
-						var minutes = Math.floor(s / 60);
-						var seconds = s % 60;
-						return hours + ':' + minutes;
-					}
-				}), flex: 1 }
+				{
+					xtype: 'templatecolumn',
+					tpl: Ext.create('Ext.XTemplate',
+									'{[Ext.Date.format(values.date, "F j, Y")]}, from {[this.toTime(values.startTime)]} to {[this.toTime(values.endTime)]}', {
+										toTime: function (s) {
+											var hours = Math.floor(s / 3600);
+											s %= 3600;
+											var minutes = Math.floor(s / 60);
+											var seconds = s % 60;
+											return hours + ':' + minutes;
+										}
+									}),
+					flex: 1
+				}
 			],
 			store: 'Timeslots'
 		},

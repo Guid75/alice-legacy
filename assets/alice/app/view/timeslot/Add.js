@@ -4,6 +4,7 @@ Ext.define('Alice.view.timeslot.Add', {
 	alias: 'widget.timeslot-add',
 
 	requires: [
+		'Ext.form.field.Checkbox',
 		'Ext.form.field.Time',
 		'Alice.view.timeslot.AddController',
 		'Alice.view.timeslot.AddModel'
@@ -28,16 +29,6 @@ Ext.define('Alice.view.timeslot.Add', {
 					anchor: '100%'
 				},
 				defaultType: 'textfield',
-				buttons: [
-					{
-						text: 'Create timeslot',
-						handler: 'onCreateTimeslot'
-					},
-					{
-						text: 'Cancel',
-						handler: 'closeView'
-					}
-				],
 				items: [
 					{
 						xtype: 'datefield',
@@ -60,6 +51,21 @@ Ext.define('Alice.view.timeslot.Add', {
 						fieldLabel: 'To',
 						name: 'endTime',
 						reference: 'endTimeField'
+					},
+					{
+						xtype: 'checkbox',
+						hideEmptyLabel: false,
+						boxLabel: 'Week recurrence'
+					}
+				],
+				buttons: [
+					{
+						text: 'Create timeslot',
+						handler: 'onCreateTimeslot'
+					},
+					{
+						text: 'Cancel',
+						handler: 'closeView'
 					}
 				]
 			}

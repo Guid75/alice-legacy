@@ -47,7 +47,7 @@ Ext.define('Alice.view.period.Add', {
 					{
 						xtype: 'datefield',
 						allowBlank: false,
-						fieldLabel: 'Start date',
+						fieldLabel: 'From',
 						name: 'startDate',
 						reference: 'startDateField',
 						itemId: 'startDate'
@@ -55,7 +55,7 @@ Ext.define('Alice.view.period.Add', {
 					{
 						xtype: 'datefield',
 						allowBlank: false,
-						fieldLabel: 'End date',
+						fieldLabel: 'To',
 						reference: 'endDateField',
 						name: 'endDate',
 						itemId: 'endDate'

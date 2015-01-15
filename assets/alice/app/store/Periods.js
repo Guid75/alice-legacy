@@ -5,5 +5,6 @@ Ext.define('Alice.store.Periods', {
 		'Alice.model.Period'
 	],
 	model: 'Alice.model.Period',
-	autoLoad: true
+	autoLoad: true,
+	sorters: 'startDate'
 });

@@ -18,6 +18,11 @@ Ext.define('Alice.view.timeslot.AddController', {
 			duration: endSec - startSec
 		});
 
+		r = store.add({
+			date: date,
+			duration: 100
+		});
+
 		store.sync({
 			success: function () {
 				this.closeView();
