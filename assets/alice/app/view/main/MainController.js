@@ -14,6 +14,32 @@ Ext.define('Alice.view.main.MainController', {
 
     alias: 'controller.main',
 
+	init: function () {
+		this.listen({
+			store: {
+				'*': {
+					periodsLoaded: function () {
+						var
+						periodCombo = this.lookupReference('periodCombo'),
+						store = Alice.getApplication().getStore('Periods'),
+						now = new Date(),
+						elected;
+
+						if (periodCombo.loadedOnce) {
+							return;
+						}
+						periodCombo.loadedOnce = true;
+						elected = store.getCloserPeriodFromNow();
+						console.log(elected);
+						if (elected !== undefined) {
+							periodCombo.setValue(elected);
+						}
+					}.bind(this)
+				}
+			}
+		});
+	},
+
     onClickButton: function () {
         Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     },

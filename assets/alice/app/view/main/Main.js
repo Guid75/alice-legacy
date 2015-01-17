@@ -14,8 +14,10 @@ Ext.define('Alice.view.main.Main', {
 		'Alice.view.student.Tree',
 		'Alice.view.teacher.Teachers',
 		'Alice.view.teacher.Tree',
-		'Alice.view.workshops.Main',
-		'Alice.store.Periods'
+		'Alice.store.Periods',
+		'Alice.view.period.Main',
+		'Alice.view.timeslot.Main',
+		'Alice.view.workshop.Main'
     ],
 
     xtype: 'app-main',
@@ -26,7 +28,6 @@ Ext.define('Alice.view.main.Main', {
     },
 
 	layout: 'fit',
-
 	initComponent: function () {
 		var
 		formatFunc = function (date) {
@@ -54,17 +55,24 @@ Ext.define('Alice.view.main.Main', {
 			tools: [
 				{
 					xtype: 'combo',
+					reference: 'periodCombo',
 					emptyText: '<no period selected>',
+					queryMode: 'local',
 					store: new Ext.data.ChainedStore({
 						source: 'Periods'
 					}),
 					editable: false,
 					forceSelection: true,
-					displayField: 'startDate',
+					valueField: 'id',
 					queryParam: false,
 					width: 190,
 					tpl: periodTemplate,
-					displayTpl: periodDisplayTemplate
+					displayTpl: periodDisplayTemplate,
+					listeners: {
+						select: function (combo) {
+							console.log(combo.getValue());
+						}
+					}
 				}
 			],
 			layout: 'border',
@@ -94,8 +102,22 @@ Ext.define('Alice.view.main.Main', {
 					xtype: 'tabpanel',
 					items: [
 						{
+							xtype: 'tabpanel',
 							title: 'Workshops',
-							xtype: 'workshops'
+							items: [
+								{
+									xtype: 'timeslot-main',
+									title: 'Time slots'
+								},
+								{
+									xtype: 'workshop-main',
+									title: 'Workshops'
+								},
+								{
+									xtype: 'period-main',
+									title: 'Periods'
+								}
+							]
 						},
 						{
 							title: 'Students',
