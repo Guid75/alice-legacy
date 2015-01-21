@@ -70,6 +70,7 @@ Ext.define('Alice.view.main.Main', {
 					displayTpl: periodDisplayTemplate,
 					listeners: {
 						select: function (combo) {
+							Alice.globals.currentPeriodId = combo.getValue();
 							console.log(combo.getValue());
 						}
 					}

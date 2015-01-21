@@ -12,7 +12,8 @@ Ext.define('Alice.Application', {
 		'Formations',
 		'Teachers',
 		'Periods',
-		'Timeslots'
+		'Timeslots',
+		'Workshops'
     ],
 
 	controllers: [
@@ -20,10 +21,12 @@ Ext.define('Alice.Application', {
 		'Formation',
 		'Teacher',
 		'Period',
-		'Timeslot'
+		'Timeslot',
+		'Workshop'
 	],
 
     launch: function () {
         // TODO - Launch the application
+		Ext.ns('Alice.globals');
     }
 });

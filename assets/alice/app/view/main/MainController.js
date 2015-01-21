@@ -30,7 +30,6 @@ Ext.define('Alice.view.main.MainController', {
 						}
 						periodCombo.loadedOnce = true;
 						elected = store.getCloserPeriodFromNow();
-						console.log(elected);
 						if (elected !== undefined) {
 							periodCombo.setValue(elected);
 						}
