@@ -13,5 +13,42 @@ Ext.define('Alice.view.session.Session', {
         type: 'session-session'
     },
 
-    html: 'Hello, World!!'
+	layout: 'fit',
+
+	tbar: [
+		{
+			xtype: 'button',
+			text: 'Add a student to the session',
+			handler: 'addStudent'
+		},
+		{
+			xtype: 'button',
+			text: 'Remove the current student from the session',
+			reference: 'removeButton',
+			handler: 'removeCurrentStudent',
+			disabled: true
+		}
+	],
+
+	initComponent: function () {
+		this.items = [
+			{
+				xtype: 'grid',
+				reference: 'grid',
+				bind: '{students}',
+				columns: [
+					{
+						text: 'First name',
+						dataIndex: 'firstName'
+					},
+					{
+						text: 'Last name',
+						dataIndex: 'lastName',
+						flex: 1
+					}
+				]
+			}
+		];
+		this.callParent(arguments);
+	}
 });
