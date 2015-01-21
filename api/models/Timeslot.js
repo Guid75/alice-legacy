@@ -14,6 +14,9 @@ module.exports = {
 		duration: {
 			type: 'integer',
 			required: true
+		},
+		period: {
+			model: 'period'
 		}
 	}
 };

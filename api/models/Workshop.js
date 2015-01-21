@@ -7,8 +7,17 @@
 
 module.exports = {
 
-  attributes: {
-
-  }
+	attributes: {
+		label: {
+			type: 'string',
+			required: true
+		},
+		period: {
+			model: 'period'
+		},
+		sessions: {
+			collection: 'session',
+			via: 'workshop'
+		}
+	}
 };
-
