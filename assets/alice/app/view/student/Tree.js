@@ -15,6 +15,22 @@ Ext.define('Alice.view.student.Tree', {
         type: 'studenttree'
     },
 
+	viewConfig: {
+        plugins: {
+            ptype: 'treeviewdragdrop',
+			ddGroup: 'students'
+        },
+		copy: true,
+		listeners: {
+			beforedrop: function () {
+				console.log('beforedrop from tree');
+			},
+			drop: function () {
+				console.log('drop from tree');
+			}
+		}
+    },
+
 	rootVisible: false,
 
 	tbar: [
@@ -33,6 +49,15 @@ Ext.define('Alice.view.student.Tree', {
 		}
 	],
 
+	listeners: {
+		'beforedrop': function () {
+			console.log('beforedrop');
+		},
+		'drop': function () {
+			condole.log('drop');
+		}
+	},
+
 	getStore: function () {
 		return this.store;
 	},
@@ -47,6 +72,7 @@ Ext.define('Alice.view.student.Tree', {
 			record.students().each(function (student) {
 				children.push({
 					text: student.get('lastName').toUpperCase() + ', ' + student.get('firstName'),
+					studentId: student.id,
 					leaf: true
 				});
 			});
@@ -54,6 +80,7 @@ Ext.define('Alice.view.student.Tree', {
 			root.children.push({
 				text: record.get('label'),
 				children: children,
+				formationId: record.id,
 				expanded: true
 			});
 		});

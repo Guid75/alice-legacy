@@ -3,6 +3,12 @@ Ext.define('Alice.view.teacher.Tree', {
 
 	alias: 'widget.teachertree',
 
+    viewConfig: {
+        plugins: {
+            ptype: 'treeviewdragdrop'
+        }
+    },
+
 	requires: [
 		'Ext.tree.Panel',
 		'Alice.view.teacher.TreeModel',

@@ -5,10 +5,20 @@ Ext.define('Alice.view.session.SessionController', {
 		controller: {
 			'*': {
 				'selectSession': function (sessionId) {
+					this.getView().currentSession = sessionId;
 					this.lookupReference('grid').getStore().load({
 						method: 'GET',
 						url: '/session/' + sessionId + '/students'
 					});
+				}
+			}
+		}
+	},
+	config: {
+		control: {
+			'grid': {
+				drop: function () {
+					console.log('drop');
 				}
 			}
 		}

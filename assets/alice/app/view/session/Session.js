@@ -31,10 +31,37 @@ Ext.define('Alice.view.session.Session', {
 	],
 
 	initComponent: function () {
+		var me = this;
 		this.items = [
 			{
 				xtype: 'grid',
 				reference: 'grid',
+				itemId: 'students-grid',
+				viewConfig: {
+					plugins: {
+						ptype: 'gridviewdragdrop',
+						ddGroup: 'students',
+						enableDrag: false,
+						dragText: 'Drag and drop to reorganize'
+					},
+					copy: true,
+					listeners: {
+						beforedrop: function (node, data, overModel, dropPosition, dropHandlers, eOpts) {
+							var studentId = data.records[0].data.studentId;
+							Ext.Ajax.request({
+								url: '/session/' + me.currentSession + '/students/ ' + studentId,
+								method: 'POST',
+								success: function () {
+									me.getComponent('students-grid').getStore().load({
+										method: 'GET',
+										url: '/session/' + me.currentSession + '/students'
+									});
+								}
+							});
+							dropHandlers.cancelDrop();
+						}
+					}
+				},
 				bind: '{students}',
 				columns: [
 					{
