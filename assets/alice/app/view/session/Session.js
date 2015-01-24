@@ -73,7 +73,9 @@ Ext.define('Alice.view.session.Session', {
 						dataIndex: 'lastName',
 						flex: 1
 					}
-				]
+				],
+				listeners: {
+				}
 			}
 		];
 		this.callParent(arguments);
