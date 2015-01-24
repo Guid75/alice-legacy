@@ -5,31 +5,17 @@ Ext.define('Alice.view.student.AddController', {
 		'Alice.model.Student',
 		'Alice.String'
 	],
-	refs: [
-		{
-			ref: 'login',
-			selector: 'textfield[name=login]'
-		},
-		{
-			ref: 'window',
-			selector: 'addstudent'
-		}
-	],
-
-	init: function () {
-		var me = this;
-		this.control({
-			'textfield[name=firstName]': {
-				change: function (textfield, newValue, oldValue) {
-					me.fillAutoLogin({ oldFirstName: oldValue });
-				}
-			},
-			'textfield[name=lastName]': {
-				change: function (textfield, newValue, oldValue) {
-					me.fillAutoLogin({ oldLastName: oldValue });
-				}
+	control: {
+		'textfield[name=firstName]': {
+			change: function (textfield, newValue, oldValue) {
+				this.fillAutoLogin({ oldFirstName: oldValue });
 			}
-		});
+		},
+		'textfield[name=lastName]': {
+			change: function (textfield, newValue, oldValue) {
+				this.fillAutoLogin({ oldLastName: oldValue });
+			}
+		}
 	},
 	_forgeLogin: function (firstName, lastName) {
 		return Alice.String.removeDiacritics(firstName).toLowerCase() + '.' +

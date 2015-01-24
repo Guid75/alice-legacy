@@ -6,7 +6,7 @@ Ext.define('Alice.view.session.SessionController', {
 			'*': {
 				'selectSession': function (sessionId) {
 					this.getView().currentSession = sessionId;
-					this.lookupReference('grid').getStore().load({
+					this.lookupReference('studentsGrid').getStore().load({
 						method: 'GET',
 						url: '/session/' + sessionId + '/students'
 					});
@@ -15,14 +15,15 @@ Ext.define('Alice.view.session.SessionController', {
 		}
 	},
 	control: {
-		'grid': {
+		'grid#students-grid': {
 			'selectionchange': function (grid, selected) {
 				this.lookupReference('removeButton').setDisabled(selected.length === 0);
 			}
 		}
 	},
 	removeCurrentStudent: function () {
-		var selection = this.lookupReference('grid').getSelection();
+		var grid = this.lookupReference('studentsGrid');
+		var selection = grid.getSelection();
 		var selected;
 
 		if (selection.length === 0) {
@@ -34,7 +35,7 @@ Ext.define('Alice.view.session.SessionController', {
 			url: '/session/' + this.getView().currentSession + '/students/ ' + selected.id,
 			method: 'DELETE',
 			success: function () {
-				this.lookupReference('grid').getStore().load({
+				grid.getStore().load({
 					method: 'GET',
 					url: '/session/' + this.getView().currentSession + '/students'
 				});

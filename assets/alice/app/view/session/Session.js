@@ -35,7 +35,7 @@ Ext.define('Alice.view.session.Session', {
 		this.items = [
 			{
 				xtype: 'grid',
-				reference: 'grid',
+				reference: 'studentsGrid',
 				itemId: 'students-grid',
 				viewConfig: {
 					plugins: {
