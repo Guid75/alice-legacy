@@ -4,14 +4,12 @@ Ext.define('Alice.view.formation.FormationsController', {
 	requires: [
 		'Alice.view.student.Add'
 	],
-	init: function () {
-		this.control({
-			'formationsview': {
-				studentremoved: function (view, studentId) {
-					this.removeStudent(studentId);
-				}.bind(this)
+	control: {
+		'formationsview': {
+			'studentremoved': function (view, studentId) {
+				this.removeStudent(studentId);
 			}
-		});
+		}
 	},
 	addStudent: function (button) {
 		this.fireEvent('studentAddStudent', button.record.getId());

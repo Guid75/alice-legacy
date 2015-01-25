@@ -1,15 +1,12 @@
 Ext.define('Alice.view.timeslot.MainController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.timeslot-main',
-	init: function () {
-		this.control({
-			'grid': {
-				'selectionchange': this.gridSelectionChanged
+	control: {
+		'grid': {
+			'selectionchange': function (grid, selected) {
+				this.lookupReference('removeTimeslotButton').setDisabled(selected.length === 0);
 			}
-		});
-	},
-	gridSelectionChanged: function (grid, selected) {
-		this.lookupReference('removeTimeslotButton').setDisabled(selected.length === 0);
+		}
 	},
     addTimeslot: function () {
 		this.fireEvent('addTimeslot');

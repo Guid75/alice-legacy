@@ -1,18 +1,15 @@
 Ext.define('Alice.view.teacher.TeachersController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.teachers',
-	init: function () {
-		this.control({
-			'teachersview': {
-				'selectionchange': this.gridSelectionChanged
-			}
-		});
-	},
 	requires: [
 		'Alice.model.Teacher'
 	],
-	gridSelectionChanged: function (grid, selected) {
-		this.lookupReference('removeButton').setDisabled(selected.length === 0);
+	control: {
+		'teachersview': {
+			'selectionchange': function (grid, selected) {
+				this.lookupReference('removeButton').setDisabled(selected.length === 0);
+			}
+		}
 	},
 	addTeacher: function () {
 		this.fireEvent('teacherAddTeacher');

@@ -1,3 +1,4 @@
+
 Ext.define('Alice.view.workshop.Main', {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.workshop-main',
@@ -32,7 +33,7 @@ Ext.define('Alice.view.workshop.Main', {
 				expanded: true
 			});
 		});
-		this.getComponent('workshopsTree').getStore().setRoot(root);
+		this.getComponent('workshops-tree').getStore().setRoot(root);
 	},
 
 	initComponent: function () {
@@ -55,7 +56,7 @@ Ext.define('Alice.view.workshop.Main', {
 				{
 					xtype: 'treepanel',
 					reference: 'workshopsTree',
-					itemId: 'workshopsTree',
+					itemId: 'workshops-tree',
 					store: treeStore,
 					rootVisible: false,
 					tbar: [

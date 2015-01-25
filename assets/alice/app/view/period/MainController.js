@@ -1,15 +1,12 @@
 Ext.define('Alice.view.period.MainController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.period-main',
-	init: function () {
-		this.control({
-			'period-main': {
-				'selectionchange': this.gridSelectionChanged
+	control: {
+		'#': {
+			'selectionchange': function (grid, selected) {
+				this.lookupReference('removeButton').setDisabled(selected.length === 0);
 			}
-		});
-	},
-	gridSelectionChanged: function (grid, selected) {
-		this.lookupReference('removeButton').setDisabled(selected.length === 0);
+		}
 	},
 	addPeriod: function () {
 		this.fireEvent('addPeriod');
