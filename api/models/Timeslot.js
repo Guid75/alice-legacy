@@ -17,6 +17,10 @@ module.exports = {
 		},
 		period: {
 			model: 'period'
+		},
+		sessions: {
+			collection: 'session',
+			via: 'timeslots'
 		}
 	}
 };

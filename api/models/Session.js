@@ -4,9 +4,12 @@ module.exports = {
 			required: true,
 			model: 'workshop'
 		},
-
 		students: {
 			collection: 'student',
+			via: 'sessions'
+		},
+		timeslots: {
+			collection: 'timeslot',
 			via: 'sessions'
 		}
 	}
