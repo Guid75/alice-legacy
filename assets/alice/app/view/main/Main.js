@@ -71,7 +71,6 @@ Ext.define('Alice.view.main.Main', {
 					listeners: {
 						select: function (combo) {
 							Alice.globals.currentPeriodId = combo.getValue();
-							console.log(combo.getValue());
 						}
 					}
 				}

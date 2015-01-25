@@ -6,9 +6,13 @@ Ext.define('Alice.view.session.SessionController', {
 			'*': {
 				'selectSession': function (sessionId) {
 					this.getView().currentSession = sessionId;
-					this.lookupReference('studentsGrid').getStore().load({
+					this.getViewModel().getStore('students').load({
 						method: 'GET',
 						url: '/session/' + sessionId + '/students'
+					});
+					this.getViewModel().getStore('timeslots').load({
+						method: 'GET',
+						url: '/session/' + sessionId + '/timeslots'
 					});
 				}
 			}
@@ -17,7 +21,12 @@ Ext.define('Alice.view.session.SessionController', {
 	control: {
 		'grid#students-grid': {
 			'selectionchange': function (grid, selected) {
-				this.lookupReference('removeButton').setDisabled(selected.length === 0);
+				this.lookupReference('removeStudentButton').setDisabled(selected.length === 0);
+			}
+		},
+		'grid#timeslots-grid': {
+			'selectionchange': function (grid, selected) {
+				this.lookupReference('removeTimeslotButton').setDisabled(selected.length === 0);
 			}
 		}
 	},
@@ -38,6 +47,27 @@ Ext.define('Alice.view.session.SessionController', {
 				grid.getStore().load({
 					method: 'GET',
 					url: '/session/' + this.getView().currentSession + '/students'
+				});
+			}.bind(this)
+		});
+	},
+	removeCurrentTimeslot: function () {
+		var grid = this.lookupReference('timeslotsGrid');
+		var selection = grid.getSelection();
+		var selected;
+
+		if (selection.length === 0) {
+			return;
+		}
+		selected = selection[0];
+
+		Ext.Ajax.request({
+			url: '/session/' + this.getView().currentSession + '/timeslots/ ' + selected.id,
+			method: 'DELETE',
+			success: function () {
+				grid.getStore().load({
+					method: 'GET',
+					url: '/session/' + this.getView().currentSession + '/timeslots'
 				});
 			}.bind(this)
 		});
