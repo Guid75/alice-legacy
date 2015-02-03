@@ -8,9 +8,14 @@ Ext.define('Alice.view.workshop.MainController', {
 			}
 		}
 	},
+	init: function () {
+		Alice.getApplication().getStore('Workshops').on('load', function () {
+			this.refreshTreeStore();
+		}.bind(this));
+	},
 	treeSelectionChanged: function (grid, selected) {
 		var node;
-		this.lookupReference('removeWorkshopButton').setDisabled(selected.length === 0);
+		this.lookupReference('removeButton').setDisabled(selected.length === 0);
 		if (selected.length === 0) {
 			return;
 		}
@@ -26,10 +31,35 @@ Ext.define('Alice.view.workshop.MainController', {
     addWorkshop: function () {
 		this.fireEvent('addWorkshop');
 	},
-	removeCurrentWorkshop: function () {
+	refreshTreeStore: function () {
+		var root = {
+			expanded: true,
+			children: []
+		};
+		Alice.getApplication().getStore('Workshops').each(function (record) {
+			var children = [];
+			var index = 1;
+			record.sessions().each(function (session) {
+				children.push({
+					text: 'Session ' + index++,
+					dataId: session.get('id'),
+					leaf: true
+				});
+			});
+
+			root.children.push({
+				text: record.get('label'),
+				dataId: record.get('id'),
+				children: children,
+				expanded: true
+			});
+		});
+		this.lookupReference('workshopsTree').getStore().setRoot(root);
+	},
+	removeCurrentItem: function () {
 		var
-		grid = this.lookupReference('workshopsGrid'),
-		selection = grid.getSelection(),
+		tree = this.lookupReference('workshopsTree'),
+		selection = tree.getSelection(),
 		selected;
 
 		if (selection.length === 0) {
@@ -37,8 +67,45 @@ Ext.define('Alice.view.workshop.MainController', {
 		}
 		selected = selection[0];
 
-		grid.getStore().remove(selection);
+		if (selected.data.leaf) {
+			Ext.Ajax.request({
+				url: '/session/' + selected.data.dataId,
+				method: 'DELETE',
+				success: function () {
+					Alice.getApplication().getStore('Workshops').load();
+				}
+			});
+		} else {
+			Ext.Ajax.request({
+				url: '/workshop/' + selected.data.dataId,
+				method: 'DELETE',
+				success: function () {
+					Alice.getApplication().getStore('Workshops').load();
+				}
+			});
+		}
+	},
+	addSession: function () {
+		var
+		tree = this.lookupReference('workshopsTree'),
+		selection = tree.getSelection(),
+		selected,
+		workshopId;
 
-		grid.getStore().sync();
+		if (selection.length === 0) {
+			return;
+		}
+		selected = selection[0];
+		workshopId = (selected.data.leaf ? selected.parentNode.data.dataId : selected.data.dataId);
+		Ext.Ajax.request({
+			url: '/session',
+			method: 'POST',
+			params: {
+				workshop: workshopId
+			},
+			success: function () {
+				Alice.getApplication().getStore('Workshops').load();
+			}
+		});
 	}
 });

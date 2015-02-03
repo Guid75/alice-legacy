@@ -19,5 +19,11 @@ module.exports = {
 			collection: 'session',
 			via: 'workshop'
 		}
+	},
+
+	afterDestroy: function (destroyedRecords, cb) {
+		// Destroy any session whose workshop owner has an ID of one of the
+        // deleted workshop models
+        Session.destroy({ workshop: _.pluck(destroyedRecords, 'id') }).exec(cb);
 	}
 };

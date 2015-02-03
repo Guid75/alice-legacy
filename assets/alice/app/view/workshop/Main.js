@@ -10,32 +10,6 @@ Ext.define('Alice.view.workshop.Main', {
 	controller: 'workshop-main',
 	layout: 'border',
 
-	_refreshTree: function () {
-		var root = {
-			expanded: true,
-			children: []
-		};
-		Alice.getApplication().getStore('Workshops').each(function (record) {
-			var children = [];
-			var index = 1;
-			record.sessions().each(function (session) {
-				children.push({
-					text: 'Session ' + index++,
-					dataId: session.get('id'),
-					leaf: true
-				});
-			});
-
-			root.children.push({
-				text: record.get('label'),
-				dataId: record.get('id'),
-				children: children,
-				expanded: true
-			});
-		});
-		this.getComponent('workshops-tree').getStore().setRoot(root);
-	},
-
 	initComponent: function () {
 		var treeStore = Ext.create('Ext.data.TreeStore', {
 			root: {
@@ -43,13 +17,6 @@ Ext.define('Alice.view.workshop.Main', {
 				children: []
 			}
 		});
-
-		Alice.getApplication().getStore('Workshops').on('load', function () {
-			this._refreshTree();
-		}.bind(this));
-
-		// maybe the store is loaded?
-//		this._refreshTree();
 
 		Ext.apply(this, {
 			items: [
@@ -69,15 +36,16 @@ Ext.define('Alice.view.workshop.Main', {
 									handler: 'addWorkshop'
 								},
 								{
-									text: 'A new workshop session'
+									text: 'A new workshop session',
+									handler: 'addSession'
 								}
 							]
 						},
 						{
 							xtype: 'button',
 							text: 'Remove',
-							reference: 'removeWorkshopButton',
-							handler: 'removeCurrentWorkshop',
+							reference: 'removeButton',
+							handler: 'removeCurrentItem',
 							disabled: true
 						}
 					],
